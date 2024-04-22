@@ -17,21 +17,18 @@ const setDate = () => {
 
 const addNewTask = event => {
     event.preventDefault();
-    const taskName = event.target[0].value
-    const taskDifficulty = event.target[1].value
-    console.log(taskName, taskDifficulty)
-    if (!taskName || !taskDifficulty) return;
+    const {value} = event.target.taskTest
+    if (!value) return;
     const task= document.createElement("div");
     task.classList.add("task", "roundBorder")
     task.addEventListener("click", changeTaskState)
-    task.textContent = `El nombre de la tarea es ${taskName} y el nivel de dificultad es ${taskDifficulty}`; 
-    console.log(task)
+    task.textContent = value; 
     tasksContainer.prepend(task)
-    event.target.reset();
+    event.target.reset()
 }
 
 const changeTaskState = event => {
-    event.target.classList.toggle("done");
+    event.target.classList.toggle()
 }
 
 setDate()
