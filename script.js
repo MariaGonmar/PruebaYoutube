@@ -15,12 +15,32 @@ const setDate = () => {
     dateText.textContent = date.toLocaleString("es", {weekday: "long"});
 }
 
+let tasks = JSON.parse(localStorage.getItem("tasks"))
+if (tasks) {
+    for (let task of tasks) {
+      tasksContainer.innerHTML += `<div class='container'><p>'${task.taskName}' </p></div>`;
+    }
+  }
+
+
 const addNewTask = event => {
+   let tasksList= []
+    let taskData= {}
     event.preventDefault();
     const taskName = event.target[0].value
     const taskDifficulty = event.target[1].value
+    taskData={taskName, taskDifficulty}
     console.log(taskName, taskDifficulty)
     if (!taskName || !taskDifficulty) return;
+    if (tasks){
+        let tasksFromLS= JSON.parse(localStorage.getItem("tasks"));
+        tasksList.push(...tasksFromLS, taskData);
+        return localStorage.setItem("tasks", JSON.stringify(tasksList));
+      }
+      tasksList.push(taskData);
+      console.log(tasksList)
+      localStorage.setItem("tasks", JSON.stringify(tasksList));
+    
     const task= document.createElement("div");
     task.classList.add("task", "roundBorder")
     task.addEventListener("click", changeTaskState)
@@ -28,8 +48,11 @@ const addNewTask = event => {
     console.log(task)
     tasksContainer.prepend(task)
     event.target.reset();
+    
 }
 
 const changeTaskState = event => {
     event.target.classList.toggle("done");
 }
+
+setDate()
