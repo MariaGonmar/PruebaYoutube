@@ -54,7 +54,6 @@ const addNewTask = (event) => {
 // const difByOrder = () => {
 
 // }
-
 const changeTaskState = (event) => {
   event.target.classList.toggle("done");
 };
