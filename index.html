@@ -1,33 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Lista de tareas</title>
-    <link rel="stylesheet" href="styles.css">
-    <script src="script.js" type="text/javascript" defer> </script>
-</head>
-<body>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="script.js" type="text/javascript" defer></script>
+  </head>
+  <body>
     <div class="list roundBorder">
-        <div class="date">
-            <div class="dateLeft">
-                <div id="dateNumber"></div>
-                <div>
-                    <div id="dateMonth"></div>
-                    <div id="dateYear"></div>
-                </div>
-            </div>
-            <div id="dateText"></div>
+      <div class="date">
+        <div class="dateLeft">
+          <div id="dateNumber"></div>
+          <div>
+            <div id="dateMonth"></div>
+            <div id="dateYear"></div>
+          </div>
         </div>
-        <form onsubmit="addNewTask(event)">
-            <input type="text" name="taskText" autocomplete="off" placeholder="Nueva tarea" class="roundBorder">
-            <input type="text" name="difficulty" placeholder="Nivel de dificultad">
-            <button type="submit" class="addTaskButton">+</button>
-            <button type="button" class="orderButton roundBorder" onclick="renderOrderedTasks()">Ordenar</button>
-        </form>
-        <div id="tasksContainer"></div>
+        <div id="dateText"></div>
+      </div>
+      <form onsubmit="addNewTask(event)">
+        <input
+          type="text"
+          name="taskText"
+          autocomplete="off"
+          placeholder="Nueva tarea"
+          class="roundBorder"
+        />
+        <select
+          type="select"
+          name="difficulty"
+          class="roundBorder"
+        >
+          <option value="" disabled selected hidden>
+            Nivel de dificultad
+          </option>
+          <option value="baja">Baja</option>
+          <option value="media">Media</option>
+          <option value="alta">Alta</option>
+        </select>
+
+        <div class="buttonDiv">
+          <button type="submit" class="addTaskButton">Añadir</button>
+          <button
+            type="button"
+            class="orderButton roundBorder"
+            onclick="difByOrder()"
+          >
+            Ordenar
+          </button>
+        </div>
+      </form>
+      <div id="tasksContainer"></div>
     </div>
-    
-    
-</body>
+  </body>
 </html>
