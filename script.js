@@ -33,14 +33,18 @@ const addNewTask = (event) => {
   if (!taskName || !taskDifficulty) return;
   const task = document.createElement("div");
   task.classList.add("task", "roundBorder");
-  task.addEventListener("click", changeTaskState);
-  task.textContent = `El nombre de la tarea es ${taskName} y el nivel de dificultad es ${taskDifficulty}`;
+//   task.addEventListener("click", changeTaskState);
+//   task.textContent = `El nombre de la tarea es ${taskName} y el nivel de dificultad es ${taskDifficulty}`;
 
   if (tasks) {
     let tasksFromLS = JSON.parse(localStorage.getItem("tasks"));
+    console.log(tasksFromLS)
     tasksList.push(...tasksFromLS, taskData);
     return localStorage.setItem("tasks", JSON.stringify(tasksList));
+    
   }
+
+  
 
   tasksList.push(taskData);
   console.log(tasksList);
@@ -51,11 +55,24 @@ const addNewTask = (event) => {
   event.target.reset();
 };
 
-// const difByOrder = () => {
+function filterByDifficulty(difficulty){
+    
+// return tasks.filter(task => task.taskDifficulty === difficulty)
 
-// }
-const changeTaskState = (event) => {
-  event.target.classList.toggle("done");
-};
+let filteredTasks= tasks.filter(task => task.taskDifficulty === difficulty)
+tasksContainer.innerHTML = ""
+for (let task of filteredTasks) {
+    tasksContainer.innerHTML += `<div class='container'><p>'${task.taskName}' </p></div>`;
+  }
+}
+// let difficultyInput = document.querySelector(".dificultad");
+// filterByDifficulty(difficultyInput)
+
+
+// const changeTaskState = (event) => {
+//   event.target.classList.toggle("done");
+//   event.target.classList.toggle("not-done")
+// };
 
 setDate();
+// renderTasks()

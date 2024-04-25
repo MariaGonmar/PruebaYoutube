@@ -27,14 +27,8 @@
           placeholder="Nueva tarea"
           class="roundBorder"
         />
-        <select
-          type="select"
-          name="difficulty"
-          class="roundBorder"
-        >
-          <option value="" disabled selected hidden>
-            Nivel de dificultad
-          </option>
+        <select type="select" name="difficulty" class="roundBorder">
+          <option value="" disabled selected hidden>Nivel de dificultad</option>
           <option value="baja">Baja</option>
           <option value="media">Media</option>
           <option value="alta">Alta</option>
@@ -42,12 +36,29 @@
 
         <div class="buttonDiv">
           <button type="submit" class="addTaskButton">Añadir</button>
+        </div>
+        <p>Filtrar por dificultad:</p>
+        <div class="buttonDiv"> 
           <button
             type="button"
-            class="orderButton roundBorder"
-            onclick="difByOrder()"
+            class="dificultad orderButton roundBorder"
+            onclick="filterByDifficulty(`baja`)"
           >
-            Ordenar
+            Baja
+          </button>
+          <button
+            type="button"
+            class="dificultad orderButton roundBorder"
+            onclick="filterByDifficulty(`media`)"
+          >
+            Media
+          </button>
+          <button
+            type="button"
+            class="dificultad orderButton roundBorder"
+            onclick="filterByDifficulty(`alta`)"
+          >
+            Alta
           </button>
         </div>
       </form>

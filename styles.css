@@ -93,8 +93,6 @@ input:focus {
     background-color: var(--disabled);;
 }
 
-.addTaskButton,
-
 .buttonDiv{
     display: flex;
     justify-content: center;
@@ -102,23 +100,25 @@ input:focus {
 
 .addTaskButton {
     height: 35px;
-    border-radius: 10%;
+    border-radius: 5px;
     background-color: var(--primary);
     font-size: 16px;
     width: 30%;
     margin: 5px;
+    margin-bottom: 10px;
     color: var(--light);
     display: flex;
     align-items: center;
+    justify-content: center;
 }
 
 .orderButton {
     background-color: var(--secondary);
     color: var(--light);
-    border-radius: 10%;
+    border-radius: 5px;
     margin: 5px;
     width: 30%;
-    font-size: 16px;
+    font-size: 15px;
 }
 
 .task {
